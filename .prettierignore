@@ -1,0 +1,9 @@
+# Provided code that must not be modified
+application/
+framework/
+DevTask.md
+
+# Generated
+dist/
+coverage/
+package-lock.json

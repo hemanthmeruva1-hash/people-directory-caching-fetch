@@ -1,22 +1,22 @@
 {
   "name": "challenge",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run build:server && npm run build:client",
-    "build:server": "rm -rf dist && mkdir dist && cp ./framework/mock-server/mockServiceWorker.js dist/ && esbuild ./framework/server/index.js --bundle --minify --platform=node --outfile=dist/server.js",
-    "build:client": "esbuild ./framework/client/index.js --bundle --minify --platform=browser --outfile=dist/client.js",
-    "start": "npm run build && node dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "private": true,
+  "description": "People Directory: SSR framework, caching fetch library and demo application",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.12.12",
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "esbuild": "^0.21.3"
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "npm run build && node dist/server.js",
+    "typecheck": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "fastify": "^4.27.0",
@@ -25,9 +25,23 @@
     "react-dom": "^18.3.1",
     "valibot": "^0.30.0"
   },
-  "msw": {
-    "workerDirectory": [
-      "mockServer"
-    ]
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "jsdom": "^28.1.0",
+    "prettier": "^3.10.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.0"
   }
 }
